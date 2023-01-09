@@ -15,19 +15,38 @@ class AddFoodItem extends StatefulWidget {
 
 class _AddFoodItemState extends State<AddFoodItem> {
   late InputTextField inputCategory, inputName, inputPrice;
+  late TextEditingController inputCategoryController,
+      inputNameController,
+      inputPriceController;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    inputCategory = InputTextField(fieldName: 'Category');
-    inputName = InputTextField(fieldName: 'Name');
-    inputPrice = InputTextField(fieldName: 'Price');
+    inputCategoryController = TextEditingController();
+    inputNameController = TextEditingController();
+    inputPriceController = TextEditingController();
+
+    inputCategory = InputTextField(
+      fieldName: 'Category',
+      externalController: inputCategoryController,
+    );
+    inputName = InputTextField(
+      fieldName: 'Name',
+      externalController: inputNameController,
+    );
+    inputPrice = InputTextField(
+      fieldName: 'Price',
+      externalController: inputPriceController,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+
     return Scaffold(
         backgroundColor: ColorManager.primaryOpacity70,
         body: Row(children: [

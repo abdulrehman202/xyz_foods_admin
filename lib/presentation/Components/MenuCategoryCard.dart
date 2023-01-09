@@ -15,9 +15,14 @@ class _MenuCategoryCardState extends State<MenuCategoryCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, Routes.addFoodItemRoute, arguments: {
+          'imgPath': widget.path,
+          'categoryName': widget.category
+        });
+      },
       child: Container(
-        margin: const EdgeInsets.all(AppMargin.m20),
+        margin: const EdgeInsets.all(AppMargin.m18),
         child: Card(
           elevation: 2,
           shadowColor: ColorManager.primaryOpacity70,

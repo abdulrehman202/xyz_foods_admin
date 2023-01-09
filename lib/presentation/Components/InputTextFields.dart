@@ -7,7 +7,9 @@ import '../resources/color_manager.dart';
 
 class InputTextField extends StatefulWidget {
   late String fieldName;
-  InputTextField({required this.fieldName, super.key});
+  late TextEditingController externalController;
+  InputTextField(
+      {required this.fieldName, required this.externalController, super.key});
 
   @override
   State<InputTextField> createState() => _InputTextFieldState();
@@ -26,7 +28,8 @@ class _InputTextFieldState extends State<InputTextField> {
     super.initState();
 
     style = const TextStyle(decoration: TextDecoration.underline);
-    controller = TextEditingController();
+    controller = widget.externalController;
+    // TextEditingController();
     focusNode = FocusNode();
     backgroundCursorColor = ColorManager.primary;
     cursorColor = ColorManager.primary;
