@@ -95,12 +95,12 @@ class _SelectFoodCategoryState extends State<SelectFoodCategory> {
             Expanded(
               child: GridView.count(
                 shrinkWrap: true,
-                crossAxisCount: 5,
+                crossAxisCount: 6,
                 scrollDirection: Axis.vertical,
                 children: List.generate(filteredList.length, (index) {
                   return Expanded(
-                    child: MenuCategoryCard(categoriesList[index].url,
-                        categoriesList[index].category),
+                    child: MenuCategoryCard(
+                        filteredList[index].url, filteredList[index].category),
                   );
                 }),
               ),
