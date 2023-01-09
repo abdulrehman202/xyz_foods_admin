@@ -8,8 +8,12 @@ import '../resources/color_manager.dart';
 class InputTextField extends StatefulWidget {
   late String fieldName;
   late TextEditingController externalController;
+  late bool notEditable;
   InputTextField(
-      {required this.fieldName, required this.externalController, super.key});
+      {required this.fieldName,
+      required this.externalController,
+      this.notEditable = false,
+      super.key});
 
   @override
   State<InputTextField> createState() => _InputTextFieldState();
@@ -27,7 +31,7 @@ class _InputTextFieldState extends State<InputTextField> {
     // TODO: implement initState
     super.initState();
 
-    style = const TextStyle(decoration: TextDecoration.underline);
+    style = const TextStyle();
     controller = widget.externalController;
     // TextEditingController();
     focusNode = FocusNode();
@@ -47,6 +51,7 @@ class _InputTextFieldState extends State<InputTextField> {
             const VerticalDivider(),
             Expanded(
               child: EditableText(
+                readOnly: widget.notEditable,
                 controller: controller,
                 focusNode: focusNode,
                 style: style,

@@ -16,7 +16,8 @@ class RouteGenerator {
         break;
 
       case Routes.addFoodItemRoute:
-        return MaterialPageRoute(builder: (_) => const AddFoodItem());
+        return MaterialPageRoute(
+            builder: (_) => const AddFoodItem(), settings: routeSettings);
         break;
 
       default:

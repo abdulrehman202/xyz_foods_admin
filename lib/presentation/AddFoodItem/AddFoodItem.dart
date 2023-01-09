@@ -31,6 +31,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
     inputCategory = InputTextField(
       fieldName: 'Category',
       externalController: inputCategoryController,
+      notEditable: true,
     );
     inputName = InputTextField(
       fieldName: 'Name',
@@ -46,6 +47,7 @@ class _AddFoodItemState extends State<AddFoodItem> {
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
+    inputCategoryController.text = arguments['categoryName'];
 
     return Scaffold(
         backgroundColor: ColorManager.primaryOpacity70,
