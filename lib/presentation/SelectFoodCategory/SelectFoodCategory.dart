@@ -93,26 +93,16 @@ class _SelectFoodCategoryState extends State<SelectFoodCategory> {
               ),
             ),
             Expanded(
-              child: Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(AppSize.s60),
-                        topRight: Radius.circular(AppSize.s60))),
-                padding: const EdgeInsets.all(AppPadding.p20),
-                child: SingleChildScrollView(
-                  child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: filteredList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            margin: const EdgeInsets.symmetric(horizontal: 5),
-                            child: MenuCategoryCard(filteredList[index].url,
-                                filteredList[index].category));
-                      }),
-                ),
+              child: GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 5,
+                scrollDirection: Axis.vertical,
+                children: List.generate(filteredList.length, (index) {
+                  return Expanded(
+                    child: MenuCategoryCard(categoriesList[index].url,
+                        categoriesList[index].category),
+                  );
+                }),
               ),
             ),
           ],
