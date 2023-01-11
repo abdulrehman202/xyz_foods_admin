@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xyz_foods_admin/domain/Temp.dart';
+import 'package:xyz_foods_admin/presentation/AddNewCategoryDialog/AddNewCategoryDialog.dart';
 import 'package:xyz_foods_admin/presentation/Components/MenuCategoryCard.dart';
 import 'package:xyz_foods_admin/presentation/resources/color_manager.dart';
 import 'package:xyz_foods_admin/presentation/resources/values_manager.dart';
@@ -88,21 +89,40 @@ class _SelectFoodCategoryState extends State<SelectFoodCategory> {
           children: [
             SizedBox(
               height: AppSize.s200,
-              child: Center(
-                child: SearchBar(),
-              ),
+              child: Row(children: [
+                Expanded(child: SearchBar()),
+                SizedBox(
+                    width: AppSize.s200,
+                    child: Container(
+                      padding: const EdgeInsets.all(AppPadding.p18),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return const AddNewCategoryDialog();
+                                });
+                          },
+                          child: const Text('Add New Category')),
+                    ))
+              ]),
             ),
             Expanded(
-              child: GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 6,
-                scrollDirection: Axis.vertical,
-                children: List.generate(filteredList.length, (index) {
-                  return Expanded(
-                    child: MenuCategoryCard(
-                        filteredList[index].url, filteredList[index].category),
-                  );
-                }),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: GridView.count(
+                  shrinkWrap: true,
+                  crossAxisCount: 6,
+                  scrollDirection: Axis.vertical,
+                  children: List.generate(filteredList.length, (index) {
+                    return Expanded(
+                      child: MenuCategoryCard(filteredList[index].url,
+                          filteredList[index].category),
+                    );
+                  }),
+                ),
               ),
             ),
           ],

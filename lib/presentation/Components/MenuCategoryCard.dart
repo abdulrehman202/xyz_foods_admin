@@ -24,7 +24,7 @@ class _MenuCategoryCardState extends State<MenuCategoryCard> {
       child: Container(
         margin: const EdgeInsets.all(AppMargin.m18),
         child: Card(
-          elevation: 2,
+          elevation: AppSize.s4,
           shadowColor: ColorManager.primaryOpacity70,
           child: Container(
             margin: const EdgeInsets.all(AppMargin.m12),
